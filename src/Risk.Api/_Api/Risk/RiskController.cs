@@ -8,11 +8,20 @@ namespace Risk.Api._Api.Risk
     public class RiskController : ApiController
     {
         [Route("api/risk")]
-        public HttpResponseMessage Post()
+        public HttpResponseMessage Post([FromBody] CreateRiskWithRedirect body)
         {
-            var result = Guid.NewGuid();
-            //return Request.CreateResponse(HttpStatusCode.Created, result);
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            Request.Content.ReadAsStringAsync();
+            var result = new
+            {
+                id = Guid.NewGuid(),
+                redirect = body.Redirect
+            };
+            return Request.CreateResponse(HttpStatusCode.Created, result);
         }
+    }
+
+    public class CreateRiskWithRedirect 
+    {
+        public string Redirect { get; set; }
     }
 }

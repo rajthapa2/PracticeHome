@@ -11,7 +11,8 @@
 </head>
 <body>
     <div>
-        <form action="http://localhost:30141/api/risk/" method="GET">
+        <form action="http://localhost:30141/api/risk/" method="POST">
+            <input type="hidden" name="redirect" value="http://localhost:30141/api/risk" />  
             <button>Get A Quote</button>
         </form>                        
     </div>

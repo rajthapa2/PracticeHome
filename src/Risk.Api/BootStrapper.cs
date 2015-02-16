@@ -23,6 +23,7 @@ namespace Risk.Api
 
         private Container Ioc(HttpConfiguration webApiConfig, Registry[] adapters)
         {
+            webApiConfig.MapHttpAttributeRoutes();
             var container = new Container(cfg =>
             {
                 var assemblyToScan = Assembly.GetAssembly(typeof(RiskController));
@@ -34,6 +35,7 @@ namespace Risk.Api
                 adapters.ToList().ForEach(cfg.AddRegistry);
             });
 
+            webApiConfig.EnsureInitialized();
 //            webApiConfig.DependencyResolver = new StructureMapResolver(container);
             return container;
         }

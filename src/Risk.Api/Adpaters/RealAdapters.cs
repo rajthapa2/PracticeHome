@@ -4,6 +4,5 @@ namespace Risk.Api.Adpaters
 {
     public class RealAdapters : Registry
     {
-
     }
 }
