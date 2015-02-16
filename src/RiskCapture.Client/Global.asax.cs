@@ -12,13 +12,8 @@ namespace RiskCapture.Client
         {
             AreaRegistration.RegisterAllAreas();
 
-            RegisterRoutes(RouteTable.Routes);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-        }
-
-        public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.MapRoute("default", "", new {controller = "pages", action = "home"});
         }
     }
 }

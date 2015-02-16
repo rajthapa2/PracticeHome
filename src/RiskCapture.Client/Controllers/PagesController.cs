@@ -12,5 +12,10 @@ namespace RiskCapture.Client.Controllers
             return View();
         }
 
+        public ActionResult Questions()
+        {
+            return View();
+        }
+
     }
 }

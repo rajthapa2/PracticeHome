@@ -10,13 +10,8 @@ namespace Risk.Api._Api.Risk
         [Route("api/risk")]
         public HttpResponseMessage Post([FromBody] CreateRiskWithRedirect body)
         {
-            Request.Content.ReadAsStringAsync();
-            var result = new
-            {
-                id = Guid.NewGuid(),
-                redirect = body.Redirect
-            };
-            return Request.CreateResponse(HttpStatusCode.Created, result);
+            var id = Guid.NewGuid();
+            return Request.Redirect(new Uri(body.Redirect + id));
         }
     }
 
