@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using Pipeline;
 using Risk.Api._Api.Risk;
 using StructureMap;
 using StructureMap.Configuration.DSL;
@@ -27,6 +28,7 @@ namespace Risk.Api
             var container = new Container(cfg =>
             {
                 var assemblyToScan = Assembly.GetAssembly(typeof(RiskController));
+                var pipelineRegistry = new PipeLineRegistry(assemblyToScan);
                 cfg.Scan(scanner =>
                 {
                     scanner.Assembly(assemblyToScan);

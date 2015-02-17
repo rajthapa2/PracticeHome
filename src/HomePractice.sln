@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Risk.Api", "Risk.Api\Risk.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskCapture.Client", "RiskCapture.Client\RiskCapture.Client.csproj", "{287BE02B-6DB5-4782-BACE-B8992A9CEBB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pipeline", "Pipeline\Pipeline.csproj", "{D60F1DDC-65C7-41E5-9708-E7EBB0749E19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{287BE02B-6DB5-4782-BACE-B8992A9CEBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{287BE02B-6DB5-4782-BACE-B8992A9CEBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{287BE02B-6DB5-4782-BACE-B8992A9CEBB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D60F1DDC-65C7-41E5-9708-E7EBB0749E19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D60F1DDC-65C7-41E5-9708-E7EBB0749E19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D60F1DDC-65C7-41E5-9708-E7EBB0749E19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D60F1DDC-65C7-41E5-9708-E7EBB0749E19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
