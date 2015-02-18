@@ -10,12 +10,12 @@ namespace Pipeline
         {
             For<IPipeLine>().Use<PipeLine>();
             For<ICommandHandlerProvider>().Use<CommandHandlerProvider>();
-            Scan(scanner=>scanner.AddAllTypesOf(typeof(ICommand)));
-//            Scan(scanner=>scanner.AddAllTypesOf(typeof(ICommandHandler)));
-//            Scan(scanner => scanner.AddAllTypesOf(typeof (ICommandHandler<,>)));
-//            Scan(scanner => scanner.Assembly(assemblyToScan));            
-//            Scan(scanner=> scanner.WithDefaultConventions());
-            For<ICommandHandler<CreateRisk, Nothing>>().Use<CreateRiskHandler>();
+            Scan(scanner =>
+            {
+                scanner.WithDefaultConventions();
+                scanner.AddAllTypesOf(typeof (ICommandHandler<,>));
+                scanner.Assembly(assemblyToScan);            
+            });
         }
     }
 }

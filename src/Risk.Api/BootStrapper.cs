@@ -36,11 +36,8 @@ namespace Risk.Api
                     scanner.WithDefaultConventions();
                 });
                 adapters.ToList().ForEach(cfg.AddRegistry);
-
                 cfg.AddRegistry(pipelineRegistry);
             });
-            
-
             webApiConfig.EnsureInitialized();
             webApiConfig.DependencyResolver = new StructureMapResolver(container);
             return container;
