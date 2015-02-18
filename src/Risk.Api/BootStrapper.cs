@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Web.Http;
 using Pipeline;
@@ -23,7 +24,7 @@ namespace Risk.Api
             return container;
         }
 
-        private Container Ioc(HttpConfiguration webApiConfig, Registry[] adapters)
+        private Container Ioc(HttpConfiguration webApiConfig, IEnumerable<Registry> adapters)
         {
             webApiConfig.MapHttpAttributeRoutes();
             var container = new Container(cfg =>

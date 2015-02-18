@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using Risk.Api._Api.Risk;
 using StructureMap.Configuration.DSL;
 
 namespace Pipeline

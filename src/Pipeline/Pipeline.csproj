@@ -48,8 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlerProvider.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandHandler.cs" />
     <Compile Include="IPipeLine.cs" />
+    <Compile Include="Nothing.cs" />
     <Compile Include="PipeLine.cs" />
     <Compile Include="PipeLineRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

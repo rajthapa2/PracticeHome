@@ -9,22 +9,12 @@
             _commandHandlerProvider = commandHandlerProvider;
         }
 
-        public void Send(ICommand command)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void Send<TCommand>(TCommand command) where TCommand : ICommand
         {
             Send<TCommand, Nothing>(command);
         }
 
         public TResult Send<TCommand, TResult>(TCommand command) where TCommand : ICommand
-        {
-            return _Send<TCommand, TResult>(command);
-        }
-
-        private TResult _Send<TCommand, TResult>(TCommand command) where TCommand : ICommand
         {
             return _commandHandlerProvider.GetHandler<TCommand, TResult>(command)
                 .Handle(command);

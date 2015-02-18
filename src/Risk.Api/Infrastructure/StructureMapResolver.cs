@@ -7,7 +7,8 @@ using StructureMap;
 
 namespace Risk.Api.Infrastructure
 {
-    public class StructureMapResolver : StructureMapDependencyScope, IDependencyResolver, IHttpControllerActivator
+    public class StructureMapResolver : StructureMapDependencyScope, 
+        IDependencyResolver, IHttpControllerActivator
     {
         private readonly IContainer _container;
 
