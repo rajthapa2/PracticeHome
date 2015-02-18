@@ -21,6 +21,7 @@ namespace Risk.Api._Api.Risk
             var createRisk = new CreateRisk {RiskId = Guid.NewGuid()};
 
             _pipeline.Send(createRisk);
+
             var id = Guid.NewGuid();
             return Request.Redirect(new Uri(body.Redirect + id));
         }

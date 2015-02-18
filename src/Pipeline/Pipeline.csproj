@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Risk.Api">
+      <HintPath>..\Risk.Api.Host\Bin\Risk.Api.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
     </Reference>
@@ -47,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ICommand.cs" />
     <Compile Include="IPipeLine.cs" />
+    <Compile Include="PipeLine.cs" />
     <Compile Include="PipeLineRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

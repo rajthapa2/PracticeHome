@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Risk.Api._Api.Risk;
 using StructureMap.Configuration.DSL;
 
 namespace Pipeline
@@ -10,8 +11,11 @@ namespace Pipeline
             For<IPipeLine>().Use<PipeLine>();
             For<ICommandHandlerProvider>().Use<CommandHandlerProvider>();
             Scan(scanner=>scanner.AddAllTypesOf(typeof(ICommand)));
-            Scan(scanner=>scanner.AddAllTypesOf(typeof(ICommandHandler)));
-            Scan(scanner => scanner.AddAllTypesOf(typeof (ICommandHandler<,>)));
+//            Scan(scanner=>scanner.AddAllTypesOf(typeof(ICommandHandler)));
+//            Scan(scanner => scanner.AddAllTypesOf(typeof (ICommandHandler<,>)));
+//            Scan(scanner => scanner.Assembly(assemblyToScan));            
+//            Scan(scanner=> scanner.WithDefaultConventions());
+            For<ICommandHandler<CreateRisk, Nothing>>().Use<CreateRiskHandler>();
         }
     }
 }

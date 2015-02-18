@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Web.Http;
 using Pipeline;
+using Risk.Api.Infrastructure;
 using Risk.Api._Api.Risk;
 using StructureMap;
 using StructureMap.Configuration.DSL;
@@ -35,10 +36,13 @@ namespace Risk.Api
                     scanner.WithDefaultConventions();
                 });
                 adapters.ToList().ForEach(cfg.AddRegistry);
+
+                cfg.AddRegistry(pipelineRegistry);
             });
+            
 
             webApiConfig.EnsureInitialized();
-//            webApiConfig.DependencyResolver = new StructureMapResolver(container);
+            webApiConfig.DependencyResolver = new StructureMapResolver(container);
             return container;
         }
     }

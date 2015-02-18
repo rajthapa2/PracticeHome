@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="Adpaters\RealAdapters.cs" />
     <Compile Include="BootStrapper.cs" />
+    <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
+    <Compile Include="Infrastructure\StructureMapResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestExtensions.cs" />
     <Compile Include="_Api\Risk\CreateRisk.cs" />

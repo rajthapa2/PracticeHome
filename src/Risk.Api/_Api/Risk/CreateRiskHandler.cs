@@ -1,12 +1,13 @@
-﻿using Pipeline;
+﻿using System;
+using Pipeline;
 
 namespace Risk.Api._Api.Risk
 {
-    class CreateRiskHandler : AbstractCommandHandler<CreateRisk>
+    public class CreateRiskHandler : AbstractCommandHandler<CreateRisk>
     {
         public override void HandleCommand(CreateRisk command)
         {
-            
+           Console.WriteLine("dkjalkre"); 
         }
     }
 }
