@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Pipeline;
 using Risk.Api.Infrastructure;
 using Risk.Api._Api.Risk;
@@ -21,6 +22,10 @@ namespace Risk.Api
         public IContainer Boot(HttpConfiguration webApiConfig)
         {
             var container = Ioc(webApiConfig, _adapters);
+
+            var cors = new EnableCorsAttribute("*", "*", "GET,POST");
+            webApiConfig.EnableCors(cors);
+            webApiConfig.EnsureInitialized();
             return container;
         }
 
@@ -39,7 +44,6 @@ namespace Risk.Api
                 adapters.ToList().ForEach(cfg.AddRegistry);
                 cfg.AddRegistry(pipelineRegistry);
             });
-            webApiConfig.EnsureInitialized();
             webApiConfig.DependencyResolver = new StructureMapResolver(container);
             return container;
         }

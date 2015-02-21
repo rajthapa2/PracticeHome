@@ -93,6 +93,7 @@
     <Content Include="Content\lib\angular\angular.js" />
     <Content Include="Content\lib\angular\angular.min.js" />
     <Content Include="Content\lib\jquery-1.8.2.js" />
+    <Content Include="Scripts\riskApiService.js" />
     <Content Include="Scripts\policy.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Web.config" />

@@ -6,8 +6,10 @@
         .module(angular._MODULE_)
         .controller('policy', PolicyController);
 
-    function PolicyController() {
+    function PolicyController(riskApi) {
         var vm = this;
-        this.id = "hello";
+        vm.Save = function() {
+            riskApi.submit(vm);
+        };
     };
 }());
