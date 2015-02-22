@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Pipeline;
+using Risk.Api.Adpaters;
 using Risk.Api.Infrastructure;
 using Risk.Api._Api.Risk;
 using StructureMap;
@@ -42,6 +43,8 @@ namespace Risk.Api
                     scanner.WithDefaultConventions();
                 });
                 adapters.ToList().ForEach(cfg.AddRegistry);
+                webApiConfig.Filters.Add(new ExceptionResponseMapAttribute());
+
                 cfg.AddRegistry(pipelineRegistry);
             });
             webApiConfig.DependencyResolver = new StructureMapResolver(container);

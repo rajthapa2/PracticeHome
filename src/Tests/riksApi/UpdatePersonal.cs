@@ -30,6 +30,7 @@ namespace Tests.riksApi
             var requestUri = string.Format("api/risk/{0}/sections/personal", riskId);
             var response =  _client.PostAsJsonAsync(requestUri, peronalDetails).Result;
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.BadRequest));
+            var result = response.Content.ReadAsStringAsync().Result;
         }
 
         private void SetUpOwinHost()

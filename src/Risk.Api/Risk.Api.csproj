@@ -30,6 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap">
       <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
     </Reference>
@@ -55,12 +62,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adpaters\ExceptionResponseMapAttribute.cs" />
     <Compile Include="Adpaters\RealAdapters.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
     <Compile Include="Infrastructure\StructureMapResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestExtensions.cs" />
+    <Compile Include="_Api\Personal\UpdatePersonal.cs" />
+    <Compile Include="_Api\Personal\UpdatePersonalHandler.cs" />
+    <Compile Include="_Api\Personal\UpdatePersonalValidator.cs" />
     <Compile Include="_Api\Risk\CreateRisk.cs" />
     <Compile Include="_Api\Risk\CreateRiskHandler.cs" />
     <Compile Include="_Api\Risk\RiskController.cs" />

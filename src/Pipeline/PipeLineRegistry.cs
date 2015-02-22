@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using FluentValidation;
 using StructureMap.Configuration.DSL;
 
 namespace Pipeline
@@ -13,6 +14,8 @@ namespace Pipeline
             {
                 scanner.WithDefaultConventions();
                 scanner.AddAllTypesOf(typeof (ICommandHandler<,>));
+                scanner.AddAllTypesOf(typeof (IValidator<>));
+                ValidatorOptions.CascadeMode = CascadeMode.StopOnFirstFailure;
                 scanner.Assembly(assemblyToScan);            
             });
         }

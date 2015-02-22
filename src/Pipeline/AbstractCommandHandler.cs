@@ -8,6 +8,6 @@
             return Nothing.Value;
         }
 
-        public abstract void HandleCommand(TCommand message);
+        public abstract void HandleCommand(TCommand command);
     }
 }

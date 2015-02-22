@@ -13,8 +13,14 @@
             var riskId = $routeParams.riskId;
             var location = $window.location.protocol +
                 '//' + $window.location.hostname + 
-                ":30141/api/risk/" + riskId + "/sections/" + "policy";
-            $http.post(location, data);
+                ":30141/api/risk/" + riskId + "/sections/" + "personal";
+            $http.post(location, data)
+                .then(function(response) {
+                
+                })
+                ["catch"](function(response) {
+                console.log(response);
+            });
         }
     }
 }());
