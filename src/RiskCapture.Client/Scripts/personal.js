@@ -4,9 +4,9 @@
 
     angular
         .module(angular._MODULE_)
-        .controller('policy', PolicyController);
+        .controller('personal', PersonalController);
 
-    function PolicyController(riskApi) {
+    function PersonalController(riskApi) {
         var vm = this;
         vm.Save = function() {
             riskApi.submit(vm);

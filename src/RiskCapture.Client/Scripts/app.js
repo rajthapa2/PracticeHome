@@ -5,7 +5,7 @@
         .module(angular._MODULE_, ["ngRoute"])
         .config(function ($routeProvider) {
             $routeProvider
-                .when("/policy/:riskId", template("policy"))
+                .when("/personal/:riskId", template("personal"))
                 .otherwise({ redirectTo: "/new" });
         });
 

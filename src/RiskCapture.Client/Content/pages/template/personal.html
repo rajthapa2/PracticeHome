@@ -1,0 +1,17 @@
+﻿<div>
+    <p>Personal Details</p> 
+    FirstName: <input type="text" ng-model="personal.firstName" /> 
+    <br />
+    Surname: <input type="text" ng-model="personal.surname" />  
+    <br />
+    Dob : <input type="date" ng-model="personal.startDate" />
+</div> 
+<br />
+<div>
+    <button type="submit" ng-click="personal.Save()">Next</button>
+</div>   
+<div>
+    {{personal | json}}
+</div>
+
+
