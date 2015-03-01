@@ -35,7 +35,7 @@ namespace Tests.Validation
 
             Assert.That(validationResult.IsValid, Is.EqualTo(false));
             Assert.That(validationResult.Errors.Count, Is.EqualTo(1));
-            Assert.That(validationResult.Errors.First().PropertyName, Is.EqualTo("FirstName"));
+            Assert.That(validationResult.Errors.First().PropertyName, Is.EqualTo("firstName"));
         }
     }
 }

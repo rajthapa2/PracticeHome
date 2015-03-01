@@ -7,19 +7,34 @@ using NUnit.Framework;
 using Owin;
 using Risk.Api;
 using Risk.Api.Adpaters;
+using StructureMap;
 
-namespace Tests.riksApi
+namespace Tests.riksApi.UpdatePersonal
 {
     [TestFixture]
     public class UpdatePersonal
     {
         private HttpClient _client;
         private IDisposable _website;
+        private IContainer _container;
+
+
+       [SetUp]
+        public void SetUp()
+        {
+            SetUpOwinHost();            
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _website.Dispose();
+            _container.Dispose();
+        }
 
         [Test]
         public void should_validate_when_firstName_is_empty()
         {
-            SetUpOwinHost();
             var peronalDetails = new
             {
                 firstName = "",
@@ -42,7 +57,7 @@ namespace Tests.riksApi
         private void StartUp(IAppBuilder appBuilder)
         {
             var httpConfig = new HttpConfiguration();
-            var container = new BootStrapper(new InMemoryAdapters())
+            _container = new BootStrapper(new InMemoryAdapters())
                 .Boot(httpConfig);
             appBuilder.UseWebApi(httpConfig);
         }

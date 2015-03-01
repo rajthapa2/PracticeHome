@@ -69,17 +69,11 @@ namespace Risk.Api
             });
             webApiConfig.DependencyResolver = new StructureMapResolver(container);
 
-            ValidatorOptions.CascadeMode = CascadeMode.StopOnFirstFailure;
-            FluentValidationCamelCase();
 
             return container;
         }
 
-        private static void FluentValidationCamelCase()
-        {
-            ValidatorOptions.PropertyNameResolver = (type, info, arg3) => 
-                info.Name.ToString(CultureInfo.InvariantCulture).ToCamelCase();
-        }
+
     }
 
 }
