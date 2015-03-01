@@ -1,8 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using Pipeline;
 using Risk.Api.Adpaters;
 using Risk.Api.Infrastructure;
@@ -25,9 +30,23 @@ namespace Risk.Api
             var container = Ioc(webApiConfig, _adapters);
 
             var cors = new EnableCorsAttribute("*", "*", "GET,POST");
+            JsonFormatting(webApiConfig);
             webApiConfig.EnableCors(cors);
             webApiConfig.EnsureInitialized();
             return container;
+        }
+
+        private void JsonFormatting(HttpConfiguration config)
+        {
+            var formatters = config.Formatters;
+            var jsonFormatter = formatters.JsonFormatter;
+
+            var settings = jsonFormatter.SerializerSettings;
+            settings.Converters.Add(new StringEnumConverter());
+            settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            settings.Formatting = Formatting.Indented;
+
+            jsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
         }
 
         private Container Ioc(HttpConfiguration webApiConfig, IEnumerable<Registry> adapters)
