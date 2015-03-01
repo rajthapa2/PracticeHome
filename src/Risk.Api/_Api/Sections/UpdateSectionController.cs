@@ -22,6 +22,7 @@ namespace Risk.Api._Api.Sections
         {
             var json = Request.Content.ReadAsStringAsync().Result;
             var command = JsonConvert.DeserializeObject<UpdatePersonal>(json);
+            command.RiskId = riskId;
 
             _pipeline.Send(command);
 

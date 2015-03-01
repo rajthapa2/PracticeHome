@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using FluentValidation;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Conventions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -29,12 +29,22 @@ namespace Risk.Api
         public IContainer Boot(HttpConfiguration webApiConfig)
         {
             var container = Ioc(webApiConfig, _adapters);
-
             var cors = new EnableCorsAttribute("*", "*", "GET,POST");
             JsonFormatting(webApiConfig);
+            BsonFormatting();
             webApiConfig.EnableCors(cors);
             webApiConfig.EnsureInitialized();
             return container;
+        }
+
+        private void BsonFormatting()
+        {
+            var pack = new ConventionPack
+            {
+                new CamelCaseElementNameConvention(),
+                new EnumRepresentationConvention(BsonType.String)
+            };
+            ConventionRegistry.Register("mongoRegister", pack, type => true);
         }
 
         private void JsonFormatting(HttpConfiguration config)
@@ -68,12 +78,7 @@ namespace Risk.Api
                 cfg.AddRegistry(pipelineRegistry);
             });
             webApiConfig.DependencyResolver = new StructureMapResolver(container);
-
-
             return container;
         }
-
-
     }
-
 }

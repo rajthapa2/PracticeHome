@@ -33,6 +33,12 @@
     <Reference Include="FluentValidation">
       <HintPath>..\packages\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.10.0\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -63,8 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adpaters\ExceptionResponseMapAttribute.cs" />
+    <Compile Include="Adpaters\MongoConfiguration.cs" />
     <Compile Include="Adpaters\RealAdapters.cs" />
+    <Compile Include="Adpaters\RiskStore.cs" />
     <Compile Include="BootStrapper.cs" />
+    <Compile Include="Domain\IRiskStore.cs" />
+    <Compile Include="Domain\Risk.cs" />
     <Compile Include="Infrastructure\StructureMapDependencyScope.cs" />
     <Compile Include="Infrastructure\StructureMapResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

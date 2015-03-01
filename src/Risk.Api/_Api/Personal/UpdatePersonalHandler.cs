@@ -1,16 +1,20 @@
 using System.Linq;
 using FluentValidation.Results;
 using Pipeline;
+using Risk.Api.Domain;
 
 namespace Risk.Api._Api.Personal
 {
     public class UpdatePersonalHandler : AbstractCommandHandler<UpdatePersonal>
     {
         private readonly ValidatorProvider _validatorProvider;
+        private readonly IRiskStore _riskStore;
 
-        public UpdatePersonalHandler(ValidatorProvider validatorProvider)
+        public UpdatePersonalHandler(ValidatorProvider validatorProvider, 
+            IRiskStore riskStore)
         {
             _validatorProvider = validatorProvider;
+            _riskStore = riskStore;
         }
 
         public override void HandleCommand(UpdatePersonal command)
@@ -28,6 +32,12 @@ namespace Risk.Api._Api.Personal
             {
                 throw new RangeValidationException(result.Errors);
             }
+            else
+            {
+                _riskStore.Update(command);
+            }
+            
+
         }
     }
 }

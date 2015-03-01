@@ -17,11 +17,11 @@ namespace Risk.Api._Api.Risk
         [Route("api/risk")]
         public HttpResponseMessage Post([FromBody] CreateRiskWithRedirect body)
         {
-            var createRisk = new CreateRisk {RiskId = Guid.NewGuid()};
+            var id = Guid.NewGuid();
+            var createRisk = new CreateRisk {RiskId = id};
 
             _pipeline.Send(createRisk);
 
-            var id = Guid.NewGuid();
             return Request.Redirect(new Uri(body.Redirect + id));
         }
     }

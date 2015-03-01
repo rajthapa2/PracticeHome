@@ -1,4 +1,5 @@
 using System;
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 using Pipeline;
 
@@ -6,7 +7,7 @@ namespace Risk.Api._Api.Personal
 {
     public class UpdatePersonal : ICommand
     {
-        [JsonIgnore]
+        [BsonIgnore, JsonIgnore]
         public Guid RiskId { get; set; }
 
         public string FirstName { get; set; }
