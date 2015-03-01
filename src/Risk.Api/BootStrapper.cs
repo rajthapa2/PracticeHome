@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using FluentValidation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
@@ -67,7 +68,18 @@ namespace Risk.Api
                 cfg.AddRegistry(pipelineRegistry);
             });
             webApiConfig.DependencyResolver = new StructureMapResolver(container);
+
+            ValidatorOptions.CascadeMode = CascadeMode.StopOnFirstFailure;
+            FluentValidationCamelCase();
+
             return container;
         }
+
+        private static void FluentValidationCamelCase()
+        {
+            ValidatorOptions.PropertyNameResolver = (type, info, arg3) => 
+                info.Name.ToString(CultureInfo.InvariantCulture).ToCamelCase();
+        }
     }
+
 }
